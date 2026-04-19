@@ -1,0 +1,198 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using VVD_2210900012_DATN.Models;
+
+namespace VVD_2210900012_DATN.Areas.Admins.Controllers
+{
+    [Area("Admins")]
+    public class SanPhamsController : Controller
+    {
+        private readonly BookstoreContext _context;
+
+        public SanPhamsController(BookstoreContext context)
+        {
+            _context = context;
+        }
+
+        // DANH SÁCH SÁCH
+        public async Task<IActionResult> Index()
+        {
+            var sanPhams = _context.SanPhams
+                .Include(x => x.DanhMuc);
+
+            return View(await sanPhams.ToListAsync());
+        }
+
+        // CHI TIẾT
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var sanPham = await _context.SanPhams
+                .Include(x => x.DanhMuc)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (sanPham == null) return NotFound();
+
+            return View(sanPham);
+        }
+
+        // FORM THÊM
+        public IActionResult Create()
+        {
+            ViewBag.DanhMucId = new SelectList(_context.DanhMucs, "Id", "TenDanhMuc");
+            return View();
+        }
+
+        // THÊM SÁCH
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(SanPham sanPham, IFormFile uploadImage)
+        {
+            try
+            {
+                // tạo slug
+                sanPham.Slug = sanPham.TenSach.Replace(" ", "-").ToLower();
+
+                // tính giá sau giảm
+                if (sanPham.PhanTramGiam != null)
+                {
+                    sanPham.GiaSauGiam = sanPham.GiaGoc - (sanPham.GiaGoc * sanPham.PhanTramGiam / 100);
+                }
+                else
+                {
+                    sanPham.GiaSauGiam = sanPham.GiaGoc;
+                }
+
+                // upload ảnh
+                if (uploadImage != null && uploadImage.Length > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(uploadImage.FileName);
+
+                    string path = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot/images",
+                        fileName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await uploadImage.CopyToAsync(stream);
+                    }
+
+                    sanPham.AnhBia = fileName;
+                }
+
+                sanPham.CreatedAt = DateTime.Now;
+
+                _context.Add(sanPham);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ViewBag.DanhMucId = new SelectList(_context.DanhMucs, "Id", "TenDanhMuc", sanPham.DanhMucId);
+                return View(sanPham);
+            }
+        }
+
+        // FORM SỬA
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var sanPham = await _context.SanPhams.FindAsync(id);
+
+            if (sanPham == null) return NotFound();
+
+            ViewBag.DanhMucId = new SelectList(_context.DanhMucs, "Id", "TenDanhMuc", sanPham.DanhMucId);
+
+            return View(sanPham);
+        }
+
+        // SỬA SÁCH
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, SanPham sanPham, IFormFile uploadImage)
+        {
+            var sp = await _context.SanPhams.FindAsync(id);
+
+            if (sp == null) return NotFound();
+
+            try
+            {
+                sp.TenSach = sanPham.TenSach;
+                sp.DanhMucId = sanPham.DanhMucId;
+                sp.TacGia = sanPham.TacGia;
+                sp.NhaXuatBan = sanPham.NhaXuatBan;
+                sp.NamXuatBan = sanPham.NamXuatBan;
+                sp.SoTrang = sanPham.SoTrang;
+                sp.Isbn = sanPham.Isbn;
+                sp.GiaGoc = sanPham.GiaGoc;
+                sp.PhanTramGiam = sanPham.PhanTramGiam;
+                sp.MoTaNgan = sanPham.MoTaNgan;
+                sp.MoTaChiTiet = sanPham.MoTaChiTiet;
+
+                // slug
+                sp.Slug = sanPham.TenSach.Replace(" ", "-").ToLower();
+
+                // giá sau giảm
+                if (sp.PhanTramGiam != null)
+                {
+                    sp.GiaSauGiam = sp.GiaGoc - (sp.GiaGoc * sp.PhanTramGiam / 100);
+                }
+                else
+                {
+                    sp.GiaSauGiam = sp.GiaGoc;
+                }
+
+                // upload ảnh mới
+                if (uploadImage != null && uploadImage.Length > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(uploadImage.FileName);
+
+                    string path = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot/images",
+                        fileName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await uploadImage.CopyToAsync(stream);
+                    }
+
+                    sp.AnhBia = fileName;
+                }
+
+                sp.UpdatedAt = DateTime.Now;
+
+                _context.Update(sp);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                ViewBag.DanhMucId = new SelectList(_context.DanhMucs, "Id", "TenDanhMuc", sanPham.DanhMucId);
+                return View(sanPham);
+            }
+        }
+
+        // XÓA
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var sanPham = await _context.SanPhams.FindAsync(id);
+
+            if (sanPham != null)
+            {
+                _context.SanPhams.Remove(sanPham);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

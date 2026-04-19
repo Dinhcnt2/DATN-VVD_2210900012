@@ -1,0 +1,35 @@
+﻿@model VVD_2210900012_DATN.Models.SanPham
+
+<h2>Chi tiết sách</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <img src="~/images/@Model.AnhBia" style="width:100%" />
+    </div>
+
+    <div class="col-md-8">
+
+        <h3>@Model.TenSach</h3>
+
+        <p><b>Tác giả:</b> @Model.TacGia</p>
+        <p><b>NXB:</b> @Model.NhaXuatBan</p>
+
+        <h4 style="color:red">
+            @Model.GiaGoc.ToString("N0") đ
+        </h4>
+
+        <p>@Model.MoTaChiTiet</p>
+
+        <!-- NÚT -->
+        <a href="/Sach/MuaNgay/@Model.Id" class="btn btn-success">
+            🛒 Mua ngay
+        </a>
+
+        <a href="/Sach/Index" class="btn btn-secondary">
+            ← Quay lại
+        </a>
+
+    </div>
+
+</div>

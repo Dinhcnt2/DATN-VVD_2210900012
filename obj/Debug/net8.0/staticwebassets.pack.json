@@ -1,0 +1,289 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\VVD_2210900012_DATN.bundle.scp.css",
+      "PackagePath": "staticwebassets\\VVD_2210900012_DATN.popiy8u6d3.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\images\\01dd2e10-dba3-4bdb-9880-0550dfc1eab9.png",
+      "PackagePath": "staticwebassets\\images\\01dd2e10-dba3-4bdb-9880-0550dfc1eab9.png"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\images\\05bf1ab6-1992-4015-8e1e-be6ebd92315a.png",
+      "PackagePath": "staticwebassets\\images\\05bf1ab6-1992-4015-8e1e-be6ebd92315a.png"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\images\\2fb54121-8b58-404a-8da7-9a457a7ed4a9.png",
+      "PackagePath": "staticwebassets\\images\\2fb54121-8b58-404a-8da7-9a457a7ed4a9.png"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\images\\3191b4b9-b4c4-4aee-8509-53bb9146a751.png",
+      "PackagePath": "staticwebassets\\images\\3191b4b9-b4c4-4aee-8509-53bb9146a751.png"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\images\\6cfcdf7b-bc78-4e2a-bcb9-a6e502f8dfb1.png",
+      "PackagePath": "staticwebassets\\images\\6cfcdf7b-bc78-4e2a-bcb9-a6e502f8dfb1.png"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\vuongdinh\\VVD_2210900012_DATN\\VVD_2210900012_DATN\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VVD_2210900012_DATN.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.VVD_2210900012_DATN.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.VVD_2210900012_DATN.props",
+      "PackagePath": "build\\VVD_2210900012_DATN.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.VVD_2210900012_DATN.props",
+      "PackagePath": "buildMultiTargeting\\VVD_2210900012_DATN.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.VVD_2210900012_DATN.props",
+      "PackagePath": "buildTransitive\\VVD_2210900012_DATN.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

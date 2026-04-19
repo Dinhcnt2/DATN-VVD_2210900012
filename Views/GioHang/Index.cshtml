@@ -1,0 +1,187 @@
+﻿@model List<VVD_2210900012_DATN.Controllers.GioHangItem>
+
+@{
+    ViewData["Title"] = "Giỏ hàng";
+}
+
+<style>
+    body {
+        background: #f5f5f5;
+    }
+
+    h2 {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .card {
+        border-radius: 12px;
+        border: none;
+    }
+
+    table {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    table thead {
+        background: linear-gradient(45deg, #ff6a00, #ff914d);
+        color: white;
+    }
+
+    table th {
+        text-align: center;
+        padding: 12px;
+    }
+
+    table td {
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px;
+    }
+
+    .quantity-input {
+        width: 70px;
+        text-align: center;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .btn-primary {
+        background: #007bff;
+        border: none;
+    }
+
+    .btn-success {
+        background: linear-gradient(45deg, #28a745, #5cd65c);
+        border: none;
+        font-weight: bold;
+    }
+
+    .btn-success:hover {
+        opacity: 0.9;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        border: none;
+    }
+
+    .order-form input {
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .order-form input:focus {
+        border-color: #ff6a00;
+        box-shadow: 0 0 5px rgba(255,106,0,0.5);
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+
+    .text-success {
+        color: #28a745 !important;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+</style>
+
+<h2 class="mb-4">🛒 Giỏ hàng của bạn</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        Giỏ hàng trống 😢
+    </div>
+}
+else
+{
+    <div class="card shadow p-3">
+
+        <table class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Sách</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-start">
+                            <b>@item.TenSach</b>
+                        </td>
+
+                        <td class="text-danger fw-bold">
+                            @item.Gia.ToString("N0") đ
+                        </td>
+
+                        <td>
+                            <form asp-action="Update" method="post" class="d-flex justify-content-center">
+                                <input type="hidden" name="id" value="@item.Id" />
+
+                                <input type="number"
+                                       name="soluong"
+                                       value="@item.SoLuong"
+                                       min="1"
+                                       class="form-control quantity-input me-2" />
+                                <button class="btn btn-primary btn-sm">
+                                    OK
+                                </button>
+                            </form>
+                        </td>
+
+                        <td class="fw-bold text-success">
+                            @((item.Gia * item.SoLuong).ToString("N0")) đ
+                        </td>
+
+                        <td>
+                            <a href="/GioHang/Xoa/@item.Id"
+                               class="btn btn-danger btn-sm">
+                                Xoá
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <hr />
+
+        <!-- FORM ĐẶT HÀNG -->
+        <h4 class="mb-3">📦 Thông tin nhận hàng</h4>
+
+        <form method="post" asp-action="DatHang" class="order-form">
+
+            <input name="ten"
+                   class="form-control mb-2"
+                   placeholder="👤 Tên người nhận"
+                   required />
+
+            <input name="sdt"
+                   class="form-control mb-2"
+                   placeholder="📞 SĐT"
+                   required />
+
+            <input name="diachi"
+                   class="form-control mb-3"
+                   placeholder="🏠 Địa chỉ"
+                   required />
+
+            <button class="btn btn-success w-100 btn-lg">
+                ✅ Đặt hàng ngay
+            </button>
+        </form>
+
+    </div>
+}

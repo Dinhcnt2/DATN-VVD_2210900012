@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookStore</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <style>
+        body {
+            background: #f5f5f5;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 22px;
+            color: #ff6a00 !important;
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 300px;
+        }
+
+        #goiY {
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+            #goiY a {
+                display: flex;
+                align-items: center;
+                padding: 8px;
+                gap: 10px;
+                text-decoration: none;
+                color: black;
+            }
+
+                #goiY a:hover {
+                    background: #ffe4ec;
+                }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+
+                <a class="navbar-brand logo" asp-controller="Home" asp-action="Index">
+                    📚 BookStore
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menu">
+
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Sach" asp-action="Index">Sách</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="GioHang" asp-action="Index">🛒 Giỏ hàng</a>
+                        </li>
+                    </ul>
+
+                    <!-- 🔥 SEARCH -->
+                    <div class="search-wrapper me-3">
+                        <input id="searchBox" class="form-control" placeholder="🔍 Tìm sách..." autocomplete="off" />
+                        <div id="goiY"></div>
+                    </div>
+
+                    <!-- USER -->
+                    <ul class="navbar-nav">
+                        @if (Context.Session.GetString("TenNguoiDung") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary me-2" asp-controller="TaiKhoan" asp-action="DangNhap">
+                                    Đăng nhập
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-primary" asp-controller="TaiKhoan" asp-action="DangKy">
+                                    Đăng ký
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item mt-2 me-2">
+                                Xin chào:
+                                <b>@Context.Session.GetString("TenNguoiDung")</b>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="btn btn-danger" asp-controller="TaiKhoan" asp-action="DangXuat">
+                                    Đăng xuất
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- 🔥 SEARCH SCRIPT -->
+    <script>
+        $("#searchBox").keyup(function () {
+
+            var keyword = $(this).val();
+
+            if (keyword.length === 0) {
+                $("#goiY").html("");
+                return;
+            }
+
+            $.get("/Sach/TimKiemAjax", { keyword: keyword }, function (data) {
+
+                var html = "";
+
+                data.forEach(function (item) {
+                    html += `
+                        <a href="/Sach/ChiTiet/${item.id}">
+                            <img src="/images/${item.anh}" width="40"/>
+                            ${item.ten} - ${item.gia.toLocaleString()} đ
+                        </a>
+                    `;
+                });
+
+                $("#goiY").html(html);
+            });
+        });
+    </script>
+
+</body>
+</html>

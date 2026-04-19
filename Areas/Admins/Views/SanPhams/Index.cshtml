@@ -1,0 +1,95 @@
+﻿@model IEnumerable<VVD_2210900012_DATN.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Quản lý sách";
+}
+
+<div class="card">
+
+    <div class="card-header d-flex justify-content-between">
+
+        <h5>📚 Danh sách sản phẩm</h5>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Thêm sách
+        </a>
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered table-hover">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên sách</th>
+                    <th>Tác giả</th>
+                    <th>Nhà xuất bản</th>
+                    <th>Giá</th>
+                    <th>Ảnh</th>
+                    <th>Danh mục</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>@item.Id</td>
+
+                        <td>@item.TenSach</td>
+
+                        <td>@item.TacGia</td>
+
+                        <td>@item.NhaXuatBan</td>
+
+                        <td class="text-danger fw-bold">
+                            @item.GiaGoc.ToString("N0") đ
+                        </td>
+
+                        <td>
+                            <img src="~/images/@item.AnhBia"
+                                 width="60"
+                                 class="rounded" />
+                        </td>
+
+                        <td>@item.DanhMuc.TenDanhMuc</td>
+
+                        <td>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               class="btn btn-sm btn-warning">
+                                Sửa
+                            </a>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.Id"
+                               class="btn btn-sm btn-info">
+                                Xem
+                            </a>
+
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Bạn có chắc muốn xóa sách này không?');">
+                                    Xóa
+                                </button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
