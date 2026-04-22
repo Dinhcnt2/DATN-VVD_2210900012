@@ -17,7 +17,6 @@ namespace VVD_2210900012_DATN.Controllers
         // ===== 🔥 SÁCH BÁN CHẠY =====
         public IActionResult Index()
         {
-            // 👉 lấy lượt bán từ chi tiết đơn
             var data = _context.ChiTietDonHangs
                 .GroupBy(x => x.BienTheId)
                 .Select(g => new
@@ -37,14 +36,17 @@ namespace VVD_2210900012_DATN.Controllers
                         Id = sp.Id,
                         TenSach = sp.TenSach,
                         AnhBia = sp.AnhBia,
-                        Gia = sp.GiaSauGiam ?? sp.GiaGoc, // 🔥 FIX CHUẨN
-                        LuotBan = ab.LuotBan
+                        Gia = sp.GiaSauGiam ?? sp.GiaGoc,
+                        LuotBan = ab.LuotBan,
+                        IsActive = sp.IsActive
                     })
+                // 🔥 THÊM FILTER Ở ĐÂY (KHÔNG PHÁ CODE CŨ)
+                .Where(x => x.IsActive == true)
                 .OrderByDescending(x => x.LuotBan)
                 .Take(10)
                 .ToList();
 
-            // 👉 nếu chưa có đơn → vẫn hiển thị
+            // nếu chưa có đơn → vẫn hiển thị
             if (!data.Any())
             {
                 data = _context.SanPhams
@@ -53,9 +55,12 @@ namespace VVD_2210900012_DATN.Controllers
                         Id = x.Id,
                         TenSach = x.TenSach,
                         AnhBia = x.AnhBia,
-                        Gia = x.GiaSauGiam ?? x.GiaGoc, // 🔥 LUÔN CÓ Gia
-                        LuotBan = 0
+                        Gia = x.GiaSauGiam ?? x.GiaGoc,
+                        LuotBan = 0,
+                        IsActive = x.IsActive
                     })
+                    // 🔥 THÊM FILTER Ở ĐÂY
+                    .Where(x => x.IsActive == true)
                     .Take(10)
                     .ToList();
             }
@@ -66,9 +71,16 @@ namespace VVD_2210900012_DATN.Controllers
         // ===== CHI TIẾT =====
         public IActionResult ChiTiet(int id)
         {
-            var sach = _context.SanPhams.FirstOrDefault(x => x.Id == id);
+            var sach = _context.SanPhams
+                .FirstOrDefault(x => x.Id == id);
 
-            if (sach == null) return NotFound();
+            if (sach == null)
+                return NotFound();
+
+            if (sach.IsActive == false)
+            {
+                ViewBag.NgungBan = true;
+            }
 
             return View(sach);
         }
@@ -76,9 +88,16 @@ namespace VVD_2210900012_DATN.Controllers
         // ===== MUA NGAY =====
         public IActionResult MuaNgay(int id)
         {
-            var sach = _context.SanPhams.Any(x => x.Id == id);
+            var sach = _context.SanPhams
+                .FirstOrDefault(x => x.Id == id);
 
-            if (!sach) return NotFound();
+            if (sach == null)
+                return NotFound();
+
+            if (sach.IsActive == false)
+            {
+                return Content("❌ Sản phẩm đã ngừng bán!");
+            }
 
             return RedirectToAction("MuaNgay", "GioHang", new { id = id });
         }
@@ -94,13 +113,14 @@ namespace VVD_2210900012_DATN.Controllers
 
             var data = _context.SanPhams
                 .Where(x => x.TenSach.ToLower().Contains(keyword))
-.Select(x => new
-{
-    id = x.Id,
-    ten = x.TenSach,
-    anh = x.AnhBia ?? "no-image.png",
-    gia = x.GiaSauGiam ?? x.GiaGoc
-})
+                .Select(x => new
+                {
+                    id = x.Id,
+                    ten = x.TenSach,
+                    anh = x.AnhBia ?? "no-image.png",
+                    gia = x.GiaSauGiam ?? x.GiaGoc,
+                    isActive = x.IsActive
+                })
                 .Take(5)
                 .ToList();
 

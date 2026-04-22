@@ -33,3 +33,71 @@
     </div>
 
 </div>
+
+<!-- ================= ĐÁNH GIÁ ================= -->
+
+<hr />
+
+<h4>⭐ Đánh giá sản phẩm</h4>
+
+<!-- FORM -->
+<div class="mb-3">
+
+    <select id="soSao" class="form-control mb-2" style="width:150px;">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+    </select>
+
+    <textarea id="noiDung"
+              class="form-control mb-2"
+              placeholder="Nhập đánh giá..."></textarea>
+
+    <button class="btn btn-success"
+            onclick="guiDanhGia(@Model.Id)">
+        Gửi đánh giá
+    </button>
+
+</div>
+
+<!-- DANH SÁCH -->
+<div id="danhGiaList"></div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function loadDanhGia() {
+        $("#danhGiaList").load("/DanhGia/List?sanPhamId=@Model.Id");
+    }
+
+    function guiDanhGia(id) {
+
+        var soSao = $("#soSao").val();
+        var noiDung = $("#noiDung").val();
+
+        $.post("/DanhGia/Create",
+            {
+                sanPhamId: id,
+                soSao: soSao,
+                noiDung: noiDung
+            },
+            function (res) {
+
+                if (res.success) {
+                    alert("Đánh giá thành công!");
+                    $("#noiDung").val("");
+                    loadDanhGia();
+                } else {
+                    alert(res.message);
+                }
+            });
+    }
+
+    $(document).ready(function () {
+        loadDanhGia(); // 🔥 QUAN TRỌNG
+    });
+</script>

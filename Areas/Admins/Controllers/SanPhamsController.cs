@@ -52,20 +52,13 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
         {
             try
             {
-                // tạo slug
                 sanPham.Slug = sanPham.TenSach.Replace(" ", "-").ToLower();
 
-                // tính giá sau giảm
                 if (sanPham.PhanTramGiam != null)
-                {
                     sanPham.GiaSauGiam = sanPham.GiaGoc - (sanPham.GiaGoc * sanPham.PhanTramGiam / 100);
-                }
                 else
-                {
                     sanPham.GiaSauGiam = sanPham.GiaGoc;
-                }
 
-                // upload ảnh
                 if (uploadImage != null && uploadImage.Length > 0)
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(uploadImage.FileName);
@@ -134,20 +127,13 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
                 sp.MoTaNgan = sanPham.MoTaNgan;
                 sp.MoTaChiTiet = sanPham.MoTaChiTiet;
 
-                // slug
                 sp.Slug = sanPham.TenSach.Replace(" ", "-").ToLower();
 
-                // giá sau giảm
                 if (sp.PhanTramGiam != null)
-                {
                     sp.GiaSauGiam = sp.GiaGoc - (sp.GiaGoc * sp.PhanTramGiam / 100);
-                }
                 else
-                {
                     sp.GiaSauGiam = sp.GiaGoc;
-                }
 
-                // upload ảnh mới
                 if (uploadImage != null && uploadImage.Length > 0)
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(uploadImage.FileName);
@@ -179,18 +165,46 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
             }
         }
 
-        // XÓA
+        // ===== DELETE ĐÃ FIX =====
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var sanPham = await _context.SanPhams.FindAsync(id);
 
-            if (sanPham != null)
+            if (sanPham == null)
+                return NotFound();
+
+            var bienThes = _context.BienTheSaches
+                .Where(x => x.SanPhamId == id)
+                .ToList();
+
+            bool daCoDon = false;
+
+            foreach (var bt in bienThes)
             {
-                _context.SanPhams.Remove(sanPham);
-                await _context.SaveChangesAsync();
+                if (_context.ChiTietDonHangs.Any(x => x.BienTheId == bt.Id))
+                {
+                    daCoDon = true;
+                    break;
+                }
             }
+
+            if (daCoDon)
+            {
+                sanPham.IsActive = false;
+
+                _context.Update(sanPham);
+                await _context.SaveChangesAsync();
+
+                TempData["Error"] = "⚠️ Sản phẩm đã có đơn → chuyển sang ngừng bán!";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.BienTheSaches.RemoveRange(bienThes);
+            _context.SanPhams.Remove(sanPham);
+
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }

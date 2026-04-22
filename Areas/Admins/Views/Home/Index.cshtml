@@ -1,128 +1,205 @@
-﻿@{
+﻿@model IEnumerable<VVD_2210900012_DATN.Models.DonHang>
+
+@{
     ViewData["Title"] = "Dashboard";
 }
 
-<h2 class="mb-4">📊 Dashboard Quản Trị</h2>
+<style>
+    .dashboard {
+        padding: 20px;
+    }
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="card text-white bg-primary mb-3">
-            <div class="card-body">
-                <h5 class="card-title">📚 Tổng Sách</h5>
-                <h3>120</h3>
-                <p class="card-text">Số lượng sách trong hệ thống</p>
-            </div>
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .card-box {
+        padding: 20px;
+        border-radius: 12px;
+        color: white;
+        font-weight: bold;
+    }
+
+    .blue {
+        background: #007bff;
+    }
+
+    .green {
+        background: #28a745;
+    }
+
+    .yellow {
+        background: #ffc107;
+        color: black;
+    }
+
+    .red {
+        background: #dc3545;
+    }
+
+    .card-box h2 {
+        font-size: 26px;
+        margin: 0;
+    }
+
+    .card-box p {
+        margin: 5px 0 0;
+    }
+
+    .table-box {
+        background: #fff;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .waiting {
+        background: orange;
+        color: white;
+    }
+
+    .processing {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .done {
+        background: #28a745;
+        color: white;
+    }
+
+    .cancel {
+        background: #dc3545;
+        color: white;
+    }
+</style>
+
+<div class="dashboard">
+
+    <h2>📊 Dashboard Quản Trị</h2>
+
+    <!-- 🔥 THỐNG KÊ -->
+    <div class="card-container">
+
+        <div class="card-box blue">
+            <h2>@ViewBag.TongSach</h2>
+            <p>Tổng sách</p>
         </div>
+
+        <div class="card-box green">
+            <h2>@ViewBag.TongDon</h2>
+            <p>Đơn hàng</p>
+        </div>
+
+        <div class="card-box yellow">
+            <h2>@ViewBag.TongUser</h2>
+            <p>Người dùng</p>
+        </div>
+
+        <div class="card-box red">
+            <h2>@ViewBag.DoanhThu.ToString("N0") đ</h2>
+            <p>Doanh thu</p>
+        </div>
+
     </div>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-success mb-3">
-            <div class="card-body">
-                <h5 class="card-title">🧾 Đơn Hàng</h5>
-                <h3>45</h3>
-                <p class="card-text">Tổng đơn hàng đã đặt</p>
-            </div>
-        </div>
-    </div>
+    <!-- 🔥 ĐƠN GẦN ĐÂY -->
+    <div class="table-box">
 
-    <div class="col-md-3">
-        <div class="card text-white bg-warning mb-3">
-            <div class="card-body">
-                <h5 class="card-title">👤 Người Dùng</h5>
-                <h3>60</h3>
-                <p class="card-text">Tổng người dùng</p>
-            </div>
-        </div>
-    </div>
+        <h4>📦 Đơn hàng gần đây</h4>
 
-    <div class="col-md-3">
-        <div class="card text-white bg-danger mb-3">
-            <div class="card-body">
-                <h5 class="card-title">💰 Doanh Thu</h5>
-                <h3>25.000.000đ</h3>
-                <p class="card-text">Doanh thu bán sách</p>
-            </div>
-        </div>
-    </div>
-</div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Mã</th>
+                    <th>Khách</th>
+                    <th>Tổng tiền</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
 
-<div class="row">
-    <div class="col-md-6">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MaDonHangCode</td>
+                        <td>@item.HoTen</td>
+                        <td>@item.TongTien?.ToString("N0") đ</td>
 
-        <div class="card">
-            <div class="card-header">
-                📦 Đơn hàng gần đây
-            </div>
-
-            <div class="card-body">
-
-                <table class="table table-bordered">
-
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Khách hàng</th>
-                            <th>Trạng thái</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>Đã giao</td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Trần Văn B</td>
-                            <td>Đang xử lý</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Lê Văn C</td>
-                            <td>Đang giao</td>
-                        </tr>
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
+                        <td>
+                            @if (item.TrangThaiThanhToan == "ChuaThanhToan")
+                            {
+                                <span class="badge cancel">Chưa thanh toán</span>
+                            }
+                            else
+                            {
+                                if (item.TrangThai == "ChoXacNhan")
+                                {
+                                    <span class="badge waiting">Đã thanh toán</span>
+                                }
+                                else if (item.TrangThai == "DangXuLy")
+                                {
+                                    <span class="badge processing">Đang xử lý</span>
+                                }
+                                else if (item.TrangThai == "HoanThanh")
+                                {
+                                    <span class="badge done">Hoàn thành</span>
+                                }
+                                else
+                                {
+                                    <span class="badge cancel">Huỷ</span>
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
     </div>
 
-    <div class="col-md-6">
+    <!-- 🔥 ĐÁNH GIÁ GẦN ĐÂY (THÊM MỚI) -->
+    <div class="table-box">
 
-        <div class="card">
+        <h4>⭐ Đánh giá gần đây</h4>
 
-            <div class="card-header">
-                ⭐ Đánh giá mới
-            </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Sách</th>
+                    <th>Sao</th>
+                    <th>Nội dung</th>
+                </tr>
+            </thead>
 
-            <div class="card-body">
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">
-                        ⭐⭐⭐⭐⭐ Sách rất hay
-                    </li>
-
-                    <li class="list-group-item">
-                        ⭐⭐⭐⭐ Nội dung tốt
-                    </li>
-
-                    <li class="list-group-item">
-                        ⭐⭐⭐⭐ Giao hàng nhanh
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
+            <tbody>
+                @foreach (var dg in ViewBag.DanhGiaGanDay)
+                {
+                    <tr>
+                        <td>@dg.MaNguoiDungNavigation?.TenDangNhap</td>
+                        <td>@dg.SanPham?.TenSach</td>
+                        <td>@dg.SoSao ⭐</td>
+                        <td>@dg.NoiDung</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
     </div>
 

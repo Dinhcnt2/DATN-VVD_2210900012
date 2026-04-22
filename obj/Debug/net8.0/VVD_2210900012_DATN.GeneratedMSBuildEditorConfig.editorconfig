@@ -328,12 +328,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/DonHang/ThanhToan.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uSGFuZ1xUaGFuaFRvYW4uY3NodG1s
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/BaiViet/details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpVmlldFxkZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/BaiViet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpVmlldFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/DanhGia/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuaEdpYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/DonHang/ThanhCong.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uSGFuZ1xUaGFuaENvbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/GioHang/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/GioHang/ThanhToan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xUaGFuaFRvYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/GioHang/_VoucherList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xfVm91Y2hlckxpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/Home/Index.cshtml]
@@ -342,6 +362,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/LienHe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGllbkhlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/vuongdinh/VVD_2210900012_DATN/VVD_2210900012_DATN/Views/Sach/ChiTiet.cshtml]

@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
-    <style>
+    <!-- 🔥 FIX LỖI Styles -->
+    @RenderSection("Styles", required: false)
 
+    <style>
         body {
             margin: 0;
             font-family: "Segoe UI",sans-serif;
@@ -17,7 +19,6 @@
         }
 
         /* SIDEBAR */
-
         .sidebar {
             position: fixed;
             top: 0;
@@ -47,8 +48,13 @@
                     color: white;
                 }
 
-        /* TOPBAR */
+                /* 🔥 ACTIVE MENU */
+                .sidebar a.active {
+                    background: #007bff;
+                    color: white;
+                }
 
+        /* TOPBAR */
         .topbar {
             margin-left: 250px;
             height: 60px;
@@ -61,7 +67,6 @@
         }
 
         /* CONTENT */
-
         .main-content {
             margin-left: 250px;
             padding: 25px;
@@ -69,7 +74,6 @@
         }
 
         /* FOOTER */
-
         .footer {
             margin-left: 250px;
             text-align: center;
@@ -77,15 +81,12 @@
             background: white;
             border-top: 1px solid #ddd;
         }
-
     </style>
-
 </head>
 
 <body>
 
     <!-- SIDEBAR -->
-
     <div class="sidebar">
 
         <h4>📚 BOOK ADMIN</h4>
@@ -107,9 +108,7 @@
 
     </div>
 
-
     <!-- TOPBAR -->
-
     <div class="topbar">
 
         <h5>📊 Hệ thống quản trị website bán sách</h5>
@@ -123,29 +122,21 @@
 
     </div>
 
-
     <!-- CONTENT -->
-
     <div class="main-content">
-
-        @RenderBody()
-
+        @RenderBody() <!-- 🔥 QUAN TRỌNG -->
     </div>
-
 
     <!-- FOOTER -->
-
     <div class="footer">
-
         © 2026 - Hệ thống quản lý bán sách
-
     </div>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- 🔥 SCRIPT SECTION -->
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
-</html> 
+</html>

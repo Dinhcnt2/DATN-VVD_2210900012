@@ -51,17 +51,17 @@
         font-size: 12px;
         text-decoration: none;
         display: inline-block;
-        transition: 0.2s;
+        cursor: pointer;
     }
 
-        .badge:hover {
-            transform: scale(1.1);
-            opacity: 0.9;
-        }
-
     .waiting {
-        background: #ffc107;
-        color: black;
+        background: orange;
+        color: white;
+    }
+
+    .processing {
+        background: #17a2b8;
+        color: white;
     }
 
     .done {
@@ -71,11 +71,6 @@
 
     .cancel {
         background: #dc3545;
-        color: white;
-    }
-
-    .processing {
-        background: #17a2b8;
         color: white;
     }
 
@@ -130,20 +125,12 @@
             {
                 <tr>
                     <td><b>@item.MaDonHangCode</b></td>
-
                     <td>@item.HoTen</td>
-
                     <td>@item.SoDienThoai</td>
+                    <td class="price">@item.TongTien?.ToString("N0") đ</td>
+                    <td>@(item.Voucher != null ? item.Voucher.MaCode : "Không")</td>
 
-                    <td class="price">
-                        @item.TongTien?.ToString("N0") đ
-                    </td>
-
-                    <td>
-                        @(item.Voucher != null ? item.Voucher.MaCode : "Không")
-                    </td>
-
-                    <!-- 🔥 THANH TOÁN (CLICK ĐƯỢC) -->
+                    <!-- 🔥 THANH TOÁN -->
                     <td>
                         @if (item.TrangThaiThanhToan == "ChuaThanhToan")
                         {
@@ -151,7 +138,7 @@
                                asp-route-id="@item.MaDonHang"
                                asp-route-status="DaThanhToan"
                                class="badge cancel">
-                                Xác nhận
+                                💳 Xác nhận TT
                             </a>
                         }
                         else
@@ -160,15 +147,19 @@
                         }
                     </td>
 
-                    <!-- 🔥 TRẠNG THÁI (CLICK ĐƯỢC) -->
+                    <!-- 🔥 TRẠNG THÁI (FIX LỖI RAZOR) -->
                     <td>
-                        @if (item.TrangThai == "ChoXacNhan")
+                        @if (item.TrangThaiThanhToan == "ChuaThanhToan")
+                        {
+                            <span class="badge cancel">Chưa TT</span>
+                        }
+                        else if (item.TrangThai == "ChoXacNhan")
                         {
                             <a asp-action="CapNhatTrangThai"
                                asp-route-id="@item.MaDonHang"
                                asp-route-status="DangXuLy"
                                class="badge waiting">
-                                Xử lý
+                                ⚙️ Xử lý
                             </a>
                         }
                         else if (item.TrangThai == "DangXuLy")
@@ -177,7 +168,7 @@
                                asp-route-id="@item.MaDonHang"
                                asp-route-status="HoanThanh"
                                class="badge processing">
-                                Hoàn thành
+                                ✅ Hoàn thành
                             </a>
                         }
                         else if (item.TrangThai == "HoanThanh")
@@ -190,9 +181,7 @@
                         }
                     </td>
 
-                    <td>
-                        @item.NgayDat?.ToString("dd/MM/yyyy")
-                    </td>
+                    <td>@item.NgayDat?.ToString("dd/MM/yyyy")</td>
 
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.MaDonHang" class="btn-action edit">Sửa</a>

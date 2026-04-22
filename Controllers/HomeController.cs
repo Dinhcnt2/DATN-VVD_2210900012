@@ -18,14 +18,13 @@ namespace VVD_2210900012_DATN.Controllers
 
         public IActionResult Index()
         {
-            // lấy 8 sách mới nhất
             var sach = _context.SanPhams
-                        .Include(x => x.DanhMuc)
-                        .Take(8)
-                        .ToList();
+                .OrderByDescending(x => x.Id) // 🔥 mới nhất lên đầu
+                .ToList();
 
             return View(sach);
         }
+
 
         public IActionResult Privacy()
         {

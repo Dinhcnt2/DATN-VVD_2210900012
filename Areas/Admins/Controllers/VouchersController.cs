@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VVD_2210900012_DATN.Models;
 
@@ -28,17 +27,12 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
         // GET: Admins/Vouchers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var voucher = await _context.Vouchers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (voucher == null)
-            {
-                return NotFound();
-            }
+
+            if (voucher == null) return NotFound();
 
             return View(voucher);
         }
@@ -50,12 +44,17 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
         }
 
         // POST: Admins/Vouchers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,MaCode,GiamGia,Loai,NgayBatDau,NgayKetThuc,SoLuong,TrangThai")] Voucher voucher)
         {
+            // 🔥 CHECK TRÙNG MÃ
+            if (_context.Vouchers.Any(x => x.MaCode == voucher.MaCode))
+            {
+                ModelState.AddModelError("", "❌ Mã voucher đã tồn tại!");
+                return View(voucher);
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(voucher);
@@ -68,29 +67,26 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
         // GET: Admins/Vouchers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var voucher = await _context.Vouchers.FindAsync(id);
-            if (voucher == null)
-            {
-                return NotFound();
-            }
+            if (voucher == null) return NotFound();
+
             return View(voucher);
         }
 
         // POST: Admins/Vouchers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,MaCode,GiamGia,Loai,NgayBatDau,NgayKetThuc,SoLuong,TrangThai")] Voucher voucher)
         {
-            if (id != voucher.Id)
+            if (id != voucher.Id) return NotFound();
+
+            // 🔥 CHECK TRÙNG (TRỪ CHÍNH NÓ)
+            if (_context.Vouchers.Any(x => x.MaCode == voucher.MaCode && x.Id != voucher.Id))
             {
-                return NotFound();
+                ModelState.AddModelError("", "❌ Mã voucher đã tồn tại!");
+                return View(voucher);
             }
 
             if (ModelState.IsValid)
@@ -103,14 +99,11 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!VoucherExists(voucher.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(voucher);
@@ -119,17 +112,12 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
         // GET: Admins/Vouchers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
             var voucher = await _context.Vouchers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (voucher == null)
-            {
-                return NotFound();
-            }
+
+            if (voucher == null) return NotFound();
 
             return View(voucher);
         }
@@ -140,12 +128,16 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var voucher = await _context.Vouchers.FindAsync(id);
+
             if (voucher != null)
             {
-                _context.Vouchers.Remove(voucher);
+                // 🔥 KHÔNG XOÁ → CHỈ TẮT
+                voucher.TrangThai = false;
+
+                _context.Update(voucher);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

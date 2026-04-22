@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VVD_2210900012_DATN.Models;
@@ -19,158 +15,80 @@ namespace VVD_2210900012_DATN.Areas.Admins.Controllers
             _context = context;
         }
 
-        // GET: Admins/BienTheSachs
+        // ===== INDEX =====
         public async Task<IActionResult> Index()
         {
-            var bookstoreContext = _context.BienTheSaches.Include(b => b.LoaiBia).Include(b => b.NgonN).Include(b => b.SanPham);
-            return View(await bookstoreContext.ToListAsync());
+            var data = _context.BienTheSaches
+                .Include(x => x.SanPham)
+                .Include(x => x.LoaiBia)
+                .Include(x => x.NgonN); // navigation đúng
+
+            return View(await data.ToListAsync());
         }
 
-        // GET: Admins/BienTheSachs/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bienTheSach = await _context.BienTheSaches
-                .Include(b => b.LoaiBia)
-                .Include(b => b.NgonN)
-                .Include(b => b.SanPham)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (bienTheSach == null)
-            {
-                return NotFound();
-            }
-
-            return View(bienTheSach);
-        }
-
-        // GET: Admins/BienTheSachs/Create
+        // ===== CREATE GET =====
         public IActionResult Create()
         {
-            ViewData["LoaiBiaId"] = new SelectList(_context.LoaiBia, "MaLoaiBia", "MaLoaiBia");
-            ViewData["NgonNguId"] = new SelectList(_context.NgonNgus, "MaNgonNgu", "MaNgonNgu");
-            ViewData["SanPhamId"] = new SelectList(_context.SanPhams, "Id", "Id");
+            LoadDropdown();
             return View();
         }
 
-        // POST: Admins/BienTheSachs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // ===== CREATE POST =====
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SanPhamId,LoaiBiaId,NgonNguId,SoLuongTon")] BienTheSach bienTheSach)
+        public async Task<IActionResult> Create(BienTheSach model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                _context.Add(bienTheSach);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["LoaiBiaId"] = new SelectList(_context.LoaiBia, "MaLoaiBia", "MaLoaiBia", bienTheSach.LoaiBiaId);
-            ViewData["NgonNguId"] = new SelectList(_context.NgonNgus, "MaNgonNgu", "MaNgonNgu", bienTheSach.NgonNguId);
-            ViewData["SanPhamId"] = new SelectList(_context.SanPhams, "Id", "Id", bienTheSach.SanPhamId);
-            return View(bienTheSach);
-        }
-
-        // GET: Admins/BienTheSachs/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
+                LoadDropdown(model);
+                return View(model);
             }
 
-            var bienTheSach = await _context.BienTheSaches.FindAsync(id);
-            if (bienTheSach == null)
-            {
-                return NotFound();
-            }
-            ViewData["LoaiBiaId"] = new SelectList(_context.LoaiBia, "MaLoaiBia", "MaLoaiBia", bienTheSach.LoaiBiaId);
-            ViewData["NgonNguId"] = new SelectList(_context.NgonNgus, "MaNgonNgu", "MaNgonNgu", bienTheSach.NgonNguId);
-            ViewData["SanPhamId"] = new SelectList(_context.SanPhams, "Id", "Id", bienTheSach.SanPhamId);
-            return View(bienTheSach);
-        }
+            var exist = await _context.BienTheSaches.FirstOrDefaultAsync(x =>
+                x.SanPhamId == model.SanPhamId &&
+                x.LoaiBiaId == model.LoaiBiaId &&
+                x.NgonNguId == model.NgonNguId
+            );
 
-        // POST: Admins/BienTheSachs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,SanPhamId,LoaiBiaId,NgonNguId,SoLuongTon")] BienTheSach bienTheSach)
-        {
-            if (id != bienTheSach.Id)
+            if (exist != null)
             {
-                return NotFound();
+                ModelState.AddModelError("", "❌ Biến thể đã tồn tại!");
+                LoadDropdown(model);
+                return View(model);
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(bienTheSach);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BienTheSachExists(bienTheSach.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["LoaiBiaId"] = new SelectList(_context.LoaiBia, "MaLoaiBia", "MaLoaiBia", bienTheSach.LoaiBiaId);
-            ViewData["NgonNguId"] = new SelectList(_context.NgonNgus, "MaNgonNgu", "MaNgonNgu", bienTheSach.NgonNguId);
-            ViewData["SanPhamId"] = new SelectList(_context.SanPhams, "Id", "Id", bienTheSach.SanPhamId);
-            return View(bienTheSach);
-        }
-
-        // GET: Admins/BienTheSachs/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bienTheSach = await _context.BienTheSaches
-                .Include(b => b.LoaiBia)
-                .Include(b => b.NgonN)
-                .Include(b => b.SanPham)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (bienTheSach == null)
-            {
-                return NotFound();
-            }
-
-            return View(bienTheSach);
-        }
-
-        // POST: Admins/BienTheSachs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var bienTheSach = await _context.BienTheSaches.FindAsync(id);
-            if (bienTheSach != null)
-            {
-                _context.BienTheSaches.Remove(bienTheSach);
-            }
-
+            _context.BienTheSaches.Add(model);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BienTheSachExists(int id)
+        // ===== LOAD DROPDOWN =====
+        private void LoadDropdown(BienTheSach? model = null)
         {
-            return _context.BienTheSaches.Any(e => e.Id == id);
+            // 🔥 SÁCH
+            ViewBag.SanPhamId = new SelectList(
+                _context.SanPhams.ToList(),
+                "Id",
+                "TenSach",
+                model?.SanPhamId
+            );
+
+            // 🔥 LOẠI BÌA
+            ViewBag.LoaiBiaId = new SelectList(
+                _context.LoaiBia.ToList(), // ✅ đúng
+                "MaLoaiBia",
+                "TenLoaiBia", // hiển thị đẹp hơn
+                model?.LoaiBiaId
+            );
+
+            // 🔥 NGÔN NGỮ
+            ViewBag.NgonNguId = new SelectList(
+                _context.NgonNgus.ToList(), // ✅ đúng
+                "MaNgonNgu",
+                "TenNgonNgu",
+                model?.NgonNguId
+            );
         }
     }
 }
